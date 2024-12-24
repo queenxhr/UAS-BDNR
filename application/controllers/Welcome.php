@@ -1,0 +1,22 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); class Welcome extends CI_Controller { public function __construct() { parent::__construct(); $this->load->model("usersmodel");
+    }
+ 
+    public function index() {    
+     
+        $this->load->view('welcome_message');
+    }
+ 
+    public function insertUser() {
+ 
+        $this->load->view('insertusers');
+    }
+ 
+    public function insertProcess() {
+ 
+        $this->usersmodel->insertusers();
+        $this->session->set_flashdata('notif','successfully insert new data');
+        redirect('welcome','refresh');
+ 
+    }
+ 
+}
